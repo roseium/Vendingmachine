@@ -106,9 +106,9 @@ void ordercoffee()                      // Function to order coffee
         printf("\nCOFFEE VENDING MACHINE\n\n\n");                       // Displays statements with formatting
         printf("Please select a coffee to buy\n\n");
         printf("Sn.\t\tCoffee\t\t\tPrice\n\n");
-        printf("1.\t\tEspresso\t\t$%.2f\n",price_espresso);
-        printf("2.\t\tCappuccino\t\t$%.2f\n",price_cappuccino);
-        printf("3.\t\tMocha\t\t\t$%.2f\n",price_mocha);
+        printf("1.\t\tEspresso\t\tAED %.2f\n",price_espresso);
+        printf("2.\t\tCappuccino\t\tAED %.2f\n",price_cappuccino);
+        printf("3.\t\tMocha\t\t\tAED %.2f\n",price_mocha);
         printf("0.\t\tEXIT\n\n");
 
         printf("Your selection: ");                 // Confirms coffee
@@ -123,7 +123,7 @@ void ordercoffee()                      // Function to order coffee
             {
                 printf("\nCOFFEE VENDING MACHINE\n\n\n");
                 printf("Coffee selected\t\tPrice\n");
-                printf("Espresso\t\t$%.2f",price_espresso);
+                printf("Espresso\t\tAED %.2f",price_espresso);
                 printf("\n\n1 -- CONFIRM\n0 -- RETURN\n\n");
                 printf("Your selection: ");
                 scanf("%d", &coffee_confirmation);
@@ -137,8 +137,8 @@ void ordercoffee()                      // Function to order coffee
                     {
                         printf("\nCOFFEE VENDING MACHINE\n\n\n");                       // Displays user the coffee they bought, how much it costs, and the change they receive
                         printf("Preparing: Espresso\n\n");
-                        printf("Price: $%.2f\n", price_espresso);
-                        printf("Your change: $%.2f\n\n",change);
+                        printf("Price: AED %.2f\n", price_espresso);
+                        printf("Your change: AED %.2f\n\n",change);
                         sleep(2);
                         printf("Your drink is ready. Thank you for ordering!");
                         sleep(2);
@@ -178,7 +178,7 @@ void ordercoffee()                      // Function to order coffee
             {
                 printf("\nCOFFEE VENDING MACHINE\n\n\n");
                 printf("Coffee selected\t\tPrice\n");
-                printf("Cappuccino\t\t$%.2f",price_cappuccino);
+                printf("Cappuccino\t\tAED %.2f",price_cappuccino);
                 printf("\n\n1 -- CONFIRM\n0 -- RETURN\n\n");
                 printf("Your selection: ");
                 scanf("%d", &coffee_confirmation);
@@ -192,8 +192,8 @@ void ordercoffee()                      // Function to order coffee
                     {
                         printf("\nCOFFEE VENDING MACHINE\n\n\n");                                   // Displays user the coffee they bought, how much it costs, and the change they receive
                         printf("Preparing: Cappuccino\n\n");
-                        printf("Price: $%.2f\n", price_cappuccino);
-                        printf("Your change: $%.2f\n\n",change);
+                        printf("Price: AED %.2f\n", price_cappuccino);
+                        printf("Your change: AED %.2f\n\n",change);
                         sleep(2);
                         printf("Your drink is ready. Thank you for ordering!");
                         sleep(2);
@@ -234,7 +234,7 @@ void ordercoffee()                      // Function to order coffee
             {
                 printf("\nCOFFEE VENDING MACHINE\n\n\n");
                 printf("Coffee selected\t\tPrice\n");
-                printf("Mocha\t\t\t$%.2f",price_mocha);
+                printf("Mocha\t\t\tAED %.2f",price_mocha);
                 printf("\n\n1 -- CONFIRM\n0 -- RETURN\n\n");
                 printf("Your selection: ");
                 scanf("%d", &coffee_confirmation);
@@ -248,8 +248,8 @@ void ordercoffee()                      // Function to order coffee
                     {
                         printf("\nCOFFEE VENDING MACHINE\n\n\n");
                         printf("Preparing: Mocha\n\n");
-                        printf("Price: $%.2f\n", price_mocha);
-                        printf("Your change: $%.2f\n\n",change);                                        // Displays user the coffee they bought, how much it costs, and the change they receive
+                        printf("Price: AED%.2f\n", price_mocha);
+                        printf("Your change: AED%.2f\n\n",change);                                        // Displays user the coffee they bought, how much it costs, and the change they receive
                         sleep(2);
                         printf("Your drink is ready. Thank you for ordering!");
                         sleep(2);
@@ -408,8 +408,8 @@ void total_sales()                                                          // F
         printf("\033[H\033[J");
         printf("\nCOFFEE VENDING MACHINE [ADMIN MODE]\n\n\n");
 
-        printf("Total sales: $%.2f\n",total_amount);
-        printf("Would you like to set the total sales to $0.00?\n\n");
+        printf("Total sales: AED %.2f\n",total_amount);
+        printf("Would you like to set the total sales to AED 0.00?\n\n");
 
         printf("0 -- EXIT\n1 -- RESET\n");
         printf("Your selection: ");
@@ -511,9 +511,9 @@ void change_coffee_price()                                                      
 
         printf("Change item price [ ENTER 0 TO EXIT ]\n\n");
         printf("S.no\t\t\tItem\t\t\tCurrent Price\n\n");
-        printf("1.\t\t\tEspresso\t\t\t$%.2f\n",price_espresso);
-        printf("2.\t\t\tCappuccino\t\t\t$%.2f\n",price_cappuccino);
-        printf("3.\t\t\tMocha\t\t\t\t$%.2f\n\n",price_mocha);
+        printf("1.\t\t\tEspresso\t\tAED %.2f\n",price_espresso);
+        printf("2.\t\t\tCappuccino\t\tAED %.2f\n",price_cappuccino);
+        printf("3.\t\t\tMocha\t\t\tAED %.2f\n\n",price_mocha);
 
         printf("Your selection: ");
         scanf("%d", &change_price);
@@ -603,29 +603,29 @@ int payment(float to_pay)                                               // Funct
     float coin;
 
     printf("\nCOFFEE VENDING MACHINE\n\n\n");
-    printf("Please pay $%.2f for your coffee\n", to_pay);
+    printf("Please pay AED %.2f for your coffee\n", to_pay);
 
     while(amount_inserted < to_pay)
     {
-        printf("Insert $1 or $0.5: ");
+        printf("Insert AED 1 or AED 0.5: ");
         scanf("%f",&coin);
 
         if (coin == 1.0 || coin == 0.5)
         {
             amount_inserted += coin;                                        // Adds coin amount into amount inserted
-            printf("Inserted amount: $%.2f\n\n", amount_inserted);
+            printf("Inserted amount: AED %.2f\n\n", amount_inserted);
         }
 
         else
         {
-            printf("Please remove the invalid coin and insert $1 or $0.5\n");
+            printf("Please remove the invalid coin and insert AED 1 or AED 0.5\n");
         }
     }
 
     if (amount_inserted >= to_pay)                                              // Gives back change
     {
         change = amount_inserted - to_pay;
-        printf("Payment completed. Returning change: $%.2f\n", change);
+        printf("Payment completed. Returning change: AED %.2f\n", change);
         sleep(2);
         printf("\033[H\033[J");
         return 1;
