@@ -1,5 +1,5 @@
 #include <stdio.h>                          // Standard I/O library
-#include <windows.h>                        // Windows function
+#include <windows.h>                        // Windows command library
 
 // COFFEE BEANS
 #define coffee_beans_espresso 8
@@ -55,55 +55,55 @@ void refill_syrup();
 int check_ingredients();
 int payment(float);
 
-int main()
+
+
+int main()              // Main function
 {
-    while (1)
+    while (1)           // While loop to keep the program running after ordering coffee
     {
         int interface_choice;
-        printf("\nCOFFEE VENDING MACHINE\n\n\n");
+        printf("\nCOFFEE VENDING MACHINE\n\n\n");       // Formatted texts displayed
         printf("Sn.\t\tOption\n\n");
         printf("1.\t\tBuy coffee\n");
         printf("2.\t\tAdmin mode\n");
         printf("0.\t\tEXIT\n\n\n");
         printf("Your selection: ");
-        scanf("%d", &interface_choice);
+        scanf("%d", &interface_choice);                 // Stores input value in interface_choice
 
         switch (interface_choice)
         {
         case 1:
-            printf("\033[H\033[J");
-            ordercoffee();
-            break;
+            printf("\033[H\033[J");                     // This printf statement clears the console
+            ordercoffee();                              // Calls the ordercoffee() function
+            break;                                      // breaks from switch case
 
         case 2:
             printf("\033[H\033[J");
-            adminmode();
+            adminmode();                                // Calls the adminmode() function
             break;
 
         case 0:
-            return 0;
+            return 0;                                   // Exits program
 
-        default:
+        default:                                        // This branch of code runs when an invalid input is typed
             printf("\nInvalid input!");
             sleep(1);
             printf("\033[H\033[J");
             break;
         }
     }
-
-    return 0;
 }
 
 
 
-void ordercoffee()
+void ordercoffee()                      // Function to order coffee
 {
-    while (1)
+    while (1)                           // While loop to keep the function running
     {
-        int coffee_selection;
-        int coffee_confirmation;
+        int coffee_selection, coffee_confirmation;                      // Initialize variables
 
-        printf("\nCOFFEE VENDING MACHINE\n\n\n");
+
+        printf("\nCOFFEE VENDING MACHINE\n\n\n");                       // Displays statements with formatting
         printf("Please select a coffee to buy\n\n");
         printf("Sn.\t\tCoffee\t\t\tPrice\n\n");
         printf("1.\t\tEspresso\t\t$%.2f\n",price_espresso);
@@ -111,15 +111,15 @@ void ordercoffee()
         printf("3.\t\tMocha\t\t\t$%.2f\n",price_mocha);
         printf("0.\t\tEXIT\n\n");
 
-        printf("Your selection: ");
+        printf("Your selection: ");                 // Confirms coffee
         scanf("%d", &coffee_selection);
 
-        switch(coffee_selection)
+        switch(coffee_selection)                    // Conditional statement for coffee statement
         {
         case 1:
 
             printf("\033[H\033[J");
-            if (check_ingredients(coffee_beans_espresso, water_espresso, milk_espresso, chocolate_syrup_espresso))
+            if (check_ingredients(coffee_beans_espresso, water_espresso, milk_espresso, chocolate_syrup_espresso))      // Checks if there are enough ingredients
             {
                 printf("\nCOFFEE VENDING MACHINE\n\n\n");
                 printf("Coffee selected\t\tPrice\n");
@@ -128,14 +128,14 @@ void ordercoffee()
                 printf("Your selection: ");
                 scanf("%d", &coffee_confirmation);
 
-                switch(coffee_confirmation)
+                switch(coffee_confirmation)                                             // Conditional statement for coffee type confirmation
                 {
                 case 1:
                     printf("\033[H\033[J");
 
                     if(payment(price_espresso))
                     {
-                        printf("\nCOFFEE VENDING MACHINE\n\n\n");
+                        printf("\nCOFFEE VENDING MACHINE\n\n\n");                       // Displays user the coffee they bought, how much it costs, and the change they receive
                         printf("Preparing: Espresso\n\n");
                         printf("Price: $%.2f\n", price_espresso);
                         printf("Your change: $%.2f\n\n",change);
@@ -144,7 +144,7 @@ void ordercoffee()
                         sleep(2);
                         printf("\033[H\033[J");
 
-                        total_amount = total_amount + price_espresso;
+                        total_amount = total_amount + price_espresso;                   // Depletes ingredients depending on which coffee is brewing
                         coffee_beans -= coffee_beans_espresso;
                         water -= water_espresso;
                         milk -= milk_espresso;
@@ -158,7 +158,7 @@ void ordercoffee()
                     printf("\033[H\033[J");
                     break;
 
-                default:
+                default:                                                // Handles invalid inputs
                     printf("\033[H\033[J");
                     printf("\nCOFFEE VENDING MACHINE\n\n\n");
                     printf("Invalid input");
@@ -174,7 +174,7 @@ void ordercoffee()
 
             printf("\033[H\033[J");
 
-            if (check_ingredients(coffee_beans_cappuccino, water_cappuccino, milk_cappuccino, chocolate_syrup_cappuccino))
+            if (check_ingredients(coffee_beans_cappuccino, water_cappuccino, milk_cappuccino, chocolate_syrup_cappuccino))      // Checks if there are enough ingredients
             {
                 printf("\nCOFFEE VENDING MACHINE\n\n\n");
                 printf("Coffee selected\t\tPrice\n");
@@ -183,14 +183,14 @@ void ordercoffee()
                 printf("Your selection: ");
                 scanf("%d", &coffee_confirmation);
 
-                switch(coffee_confirmation)
+                switch(coffee_confirmation)                                                         // Conditional statement for coffee type confirmation
                 {
                 case 1:
                     printf("\033[H\033[J");
 
                     if (payment(price_cappuccino))
                     {
-                        printf("\nCOFFEE VENDING MACHINE\n\n\n");
+                        printf("\nCOFFEE VENDING MACHINE\n\n\n");                                   // Displays user the coffee they bought, how much it costs, and the change they receive
                         printf("Preparing: Cappuccino\n\n");
                         printf("Price: $%.2f\n", price_cappuccino);
                         printf("Your change: $%.2f\n\n",change);
@@ -199,7 +199,7 @@ void ordercoffee()
                         sleep(2);
                         printf("\033[H\033[J");
 
-                        total_amount = total_amount + price_cappuccino;
+                        total_amount = total_amount + price_cappuccino;                             // Depletes ingredients depending on which coffee is brewing
                         coffee_beans -= coffee_beans_cappuccino;
                         water -= water_cappuccino;
                         milk -= milk_cappuccino;
@@ -213,7 +213,7 @@ void ordercoffee()
                     printf("\033[H\033[J");
                     break;
 
-                default:
+                default:                                                // Handles invalid inputs
                     printf("\033[H\033[J");
                     printf("\nCOFFEE VENDING MACHINE\n\n\n");
                     printf("Invalid input");
@@ -239,7 +239,7 @@ void ordercoffee()
                 printf("Your selection: ");
                 scanf("%d", &coffee_confirmation);
 
-                switch(coffee_confirmation)
+                switch(coffee_confirmation)                                                             // Conditional statement for coffee type confirmation
                 {
                 case 1:
                     printf("\033[H\033[J");
@@ -249,13 +249,13 @@ void ordercoffee()
                         printf("\nCOFFEE VENDING MACHINE\n\n\n");
                         printf("Preparing: Mocha\n\n");
                         printf("Price: $%.2f\n", price_mocha);
-                        printf("Your change: $%.2f\n\n",change);
+                        printf("Your change: $%.2f\n\n",change);                                        // Displays user the coffee they bought, how much it costs, and the change they receive
                         sleep(2);
                         printf("Your drink is ready. Thank you for ordering!");
                         sleep(2);
                         printf("\033[H\033[J");
 
-                        total_amount = total_amount + price_mocha;
+                        total_amount = total_amount + price_mocha;                                      // Depletes ingredients depending on which coffee is brewing
                         coffee_beans -= coffee_beans_mocha;
                         water -= water_mocha;
                         milk -= milk_mocha;
@@ -265,10 +265,10 @@ void ordercoffee()
 
 
                 case 0:
-                    printf("\033[H\033[J");
+                    printf("\033[H\033[J");                                                             // Exits function
                     break;
 
-                default:
+                default:                                                                                // Handles invalid inputs
                     printf("\033[H\033[J");
                     printf("\nCOFFEE VENDING MACHINE\n\n\n");
                     printf("Invalid input");
@@ -281,7 +281,7 @@ void ordercoffee()
             break;
 
 
-        case 0:
+        case 0:                                                                                         // Exits function
 
             printf("\033[H\033[J");
             printf("\nCOFFEE VENDING MACHINE\n\n\n");
@@ -290,7 +290,7 @@ void ordercoffee()
             printf("\033[H\033[J");
             return;
 
-        default:
+        default:                                                                                        // Handles invalid inputs
             printf("\033[H\033[J");
             printf("\nCOFFEE VENDING MACHINE\n\n\n");
             printf("\nInvalid input!");
@@ -301,23 +301,23 @@ void ordercoffee()
 }
 
 
-void adminmode()
+void adminmode()                                                            // Admin mode function
 {
-    int pswd;
+    int pswd;                                                               // Initialize the variables
 
     printf("\nCOFFEE VENDING MACHINE [ADMIN MODE]\n\n\n");
     printf("Enter admin password: ");
-    scanf("%d", &pswd);
+    scanf("%d", &pswd);                                                     // Stores password into variable pswd
 
-    if (pswd == admin_password)
+    if (pswd == admin_password)                                             // checks if the input password is the same as admin password
     {
         printf("\033[H\033[J");
-        admincommands();
+        admincommands();                                                    // Lets user have admin access
     }
 
     else
     {
-        printf("WRONG PASSWORD\n");
+        printf("WRONG PASSWORD\n");                                         // Returns user to main menu
         sleep(1);
         printf("Returning to main menu...");
         sleep(2);
@@ -325,13 +325,13 @@ void adminmode()
     }
 }
 
-void admincommands()
+void admincommands()                                                        // All admin commands
 {
     int adminselection;
 
     while(1)
     {
-        printf("\nCOFFEE VENDING MACHINE [ADMIN MODE]\n\n\n");
+        printf("\nCOFFEE VENDING MACHINE [ADMIN MODE]\n\n\n");              // Lists all commands
         printf("What would you like to do?\n\n");
         printf("Sn.\t\tOptions\n\n");
         printf("1.\t\tDisplay remaining ingredients\n");
@@ -341,34 +341,34 @@ void admincommands()
         printf("0.\t\tEXIT\n\n");
 
         printf("Your selection: ");
-        scanf("%d", &adminselection);
+        scanf("%d", &adminselection);                                       // Stores user selection in admin selection
 
-        switch(adminselection)
+        switch(adminselection)                                              // Switch case for which command
         {
         case 1:
-            remaining_ingredients();
+            remaining_ingredients();                                        // Calls remaining ingredients function
             break;
 
         case 2:
-            total_sales();
+            total_sales();                                                  // Calls total sales function
             break;
         case 3:
-            replenish_ingredients();
+            replenish_ingredients();                                        // Calls replenish ingredients function
             break;
 
         case 4:
-            change_coffee_price();
+            change_coffee_price();                                          // Calls change coffee price function
             break;
 
         case 0:
-            printf("\033[H\033[J");
+            printf("\033[H\033[J");                                         // Exits function
             printf("\nCOFFEE VENDING MACHINE\n\n\n");
             printf("EXITING...");
             sleep(1);
             printf("\033[H\033[J");
             return;
 
-        default:
+        default:                                                            // Handles error
             printf("\033[H\033[J");
             printf("\nCOFFEE VENDING MACHINE\n\n\n");
             printf("Invalid input");
@@ -381,7 +381,7 @@ void admincommands()
     return;
 }
 
-void remaining_ingredients()
+void remaining_ingredients()                                                // Function to display the ingredients remaining in a formatted style
 {
 
     printf("\033[H\033[J");
@@ -400,7 +400,7 @@ void remaining_ingredients()
 }
 
 
-void total_sales()
+void total_sales()                                                          // Function to display total sales and reset the amount
 {
     while(1)
     {
@@ -440,7 +440,7 @@ void total_sales()
 }
 
 
-void replenish_ingredients()
+void replenish_ingredients()                                                        // Function to replenish ingredients
 {
     int replenish_selection;
 
@@ -500,7 +500,7 @@ void replenish_ingredients()
     }
 }
 
-void change_coffee_price()
+void change_coffee_price()                                                      // Function to change coffee prices
 {
     int change_price;
 
@@ -548,15 +548,15 @@ void change_coffee_price()
     }
 }
 
-void refill_beans()
+void refill_beans()                                                             // Refills beans
 {
     int min_beans = 100;
     int max_beans = 200;
 
-    coffee_beans = rand()%(max_beans - min_beans + 1) + min_beans;
+    coffee_beans = rand()%(max_beans - min_beans + 1) + min_beans;              // Formula for random integer between two numbers
 }
 
-void refill_water()
+void refill_water()                                                             // Refills water
 {
     int min_water = 500;
     int max_water = 1000;
@@ -564,7 +564,7 @@ void refill_water()
     water = rand()%(max_water - min_water + 1) + min_water;
 }
 
-void refill_milk()
+void refill_milk()                                                              // Refills milk
 {
     int min_milk = 1000;
     int max_milk = 2000;
@@ -572,7 +572,7 @@ void refill_milk()
     milk = rand()%(max_milk - min_milk + 1) + min_milk;
 }
 
-void refill_syrup()
+void refill_syrup()                                                             // Refills syrup
 {
     int min_syrup = 200;
     int max_syrup = 500;
@@ -580,7 +580,7 @@ void refill_syrup()
     chocolate_syrup = rand()%(max_syrup - min_syrup + 1) + min_syrup;
 }
 
-int check_ingredients(int beans_required, int water_required, int milk_required, int syrup_required)
+int check_ingredients(int beans_required, int water_required, int milk_required, int syrup_required)                // Checks for ingredient availability
 {
 
     printf("\033[H\033[J");
@@ -597,7 +597,7 @@ int check_ingredients(int beans_required, int water_required, int milk_required,
     return 1;
 }
 
-int payment(float to_pay)
+int payment(float to_pay)                                               // Function for payment
 {
     float amount_inserted = 0.0;
     float coin;
@@ -612,7 +612,7 @@ int payment(float to_pay)
 
         if (coin == 1.0 || coin == 0.5)
         {
-            amount_inserted += coin;
+            amount_inserted += coin;                                        // Adds coin amount into amount inserted
             printf("Inserted amount: $%.2f\n\n", amount_inserted);
         }
 
@@ -622,7 +622,7 @@ int payment(float to_pay)
         }
     }
 
-    if (amount_inserted >= to_pay)
+    if (amount_inserted >= to_pay)                                              // Gives back change
     {
         change = amount_inserted - to_pay;
         printf("Payment completed. Returning change: $%.2f\n", change);
